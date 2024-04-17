@@ -9,13 +9,21 @@ class CategoryItem extends StatelessWidget {
   const CategoryItem(this.category);
 
   void _selectCategory(BuildContext context) {
+    // //O Navigator é um objeto que permite a navegação entre as telas
+    // //O método pushNamed é o método que permite a navegação para uma tela específica
+    // Navigator.of(context).push(MaterialPageRoute(
+    //   builder: (_) {
+    //     return CategoriesMealsPage();
+    //   },
+    // ));
     //O Navigator é um objeto que permite a navegação entre as telas
     //O método pushNamed é o método que permite a navegação para uma tela específica
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (_) {
-        return CategoriesMealsPage();
-      },
-    ));
+    Navigator.of(context).pushNamed(
+      //O primeiro argumento é o nome da rota
+      '/categories-meals',
+      //O segundo argumento é o argumento que será passado para a tela
+      arguments: category,
+    );
   }
 
   @override
