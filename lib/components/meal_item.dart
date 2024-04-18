@@ -8,12 +8,19 @@ class MealItem extends StatelessWidget {
   final Meal meal;
   const MealItem(this.meal);
 
-  void _selectMeal() {}
+  void _selectMeal(BuildContext context) {
+    Navigator.of(context).pushNamed(
+      //O primeiro argumento é o nome da rota
+      '/meal-detail',
+      //O segundo argumento é o argumento que será passado para a tela
+      arguments: meal,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: _selectMeal,
+      onTap: () => _selectMeal(context),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
