@@ -3,6 +3,9 @@ import 'package:meals/components/meal_detail.dart';
 import 'package:meals/models/meal.dart';
 
 class MealDetailPage extends StatelessWidget {
+  final Function(Meal) onToggleFavorite;
+  final bool Function(Meal) isFavorite;
+  MealDetailPage(this.onToggleFavorite, this.isFavorite);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,7 @@ class MealDetailPage extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: Center(
-        child: MealDetail(meal),
+        child: MealDetail(meal, onToggleFavorite, isFavorite),
       ),
     );
   }

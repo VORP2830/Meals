@@ -4,7 +4,9 @@ import '../models/meal.dart';
 
 class MealDetail extends StatelessWidget {
   final Meal meal;
-  const MealDetail(this.meal);
+  final Function(Meal) onToggleFavorite;
+  final Function(Meal) isFavorite;
+  const MealDetail(this.meal, this.onToggleFavorite, this.isFavorite);
 
   //Componente que cria um título para a seção
   //Não foi criado outro arquivo para este componente
@@ -98,12 +100,12 @@ class MealDetail extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
         child: FloatingActionButton(
           backgroundColor: Theme.of(context).colorScheme.secondary,
-          child: const Icon(
-            Icons.star,
+          child: Icon(
+            isFavorite(meal) ? Icons.star : Icons.star_border,
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.of(context).pop();
+            onToggleFavorite(meal);
           },
         ),
       ),

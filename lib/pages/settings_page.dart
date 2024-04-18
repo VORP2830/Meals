@@ -4,14 +4,25 @@ import 'package:meals/components/main_drawer.dart';
 import '../models/settings.dart';
 
 class SettingsPage extends StatefulWidget {
+  final Settings settings;
   final Function(Settings) onSettingsChanged;
-  SettingsPage(this.onSettingsChanged);
+  SettingsPage(this.settings, this.onSettingsChanged);
   @override
   State<SettingsPage> createState() => _SettingsPageState();
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  var settings = Settings();
+  late Settings settings;
+
+  //O initState é chamado antes do build
+  //É utilizado para inicializar variáveis
+  //É equivalente ao onInit do Angular
+  @override
+  void initState() {
+    super.initState();
+    settings = widget.settings;
+  }
+
   Widget _createSwitch(
       String title, String subtitle, bool value, Function(bool) onChanged) {
     return SwitchListTile(
